@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
         :root { 
             --primary-blue: #002366; 
             --dark-bg: #0a0e17;
@@ -21,6 +23,16 @@
         }
         
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; background-color: #fcfcfc; overflow: hidden; }
+
+        /* Custom Script Style for "Eagles" */
+        .script-eagles {
+            font-family: 'Great Vibes', cursive;
+            color: var(--gold);
+            text-transform: none;
+            display: inline-block;
+            line-height: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
 
         /* Header & Navigation */
         header { 
@@ -40,6 +52,12 @@
         .brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .logo-wrapper { width: 45px; height: 45px; border-radius: 50%; overflow: hidden; border: 1px solid #eee; }
         .logo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Updated Single Line Branding */
+        .brand-text { display: flex; flex-direction: column; }
+        .brand-sub-title { margin: 0; font-size: 0.7rem; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+        .brand-main-title { margin: 0; font-size: 1.1rem; color: var(--primary-blue); display: flex; align-items: baseline; gap: 5px; }
+
         nav { display: flex; gap: 15px; align-items: center; }
         nav a { color: var(--primary-blue); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         nav a:hover { color: var(--gold); }
@@ -65,7 +83,8 @@
             background-size: auto, 30%; background-color: #ffffff; color: white; text-align: center;
         }
         #home { background-image: radial-gradient(circle, rgba(0,35,102,0.5) 0%, rgba(0,20,60,1) 90%), url('tfoe-pe.jpg'); }
-        #home h1 { font-size: 3.5rem; text-shadow: 2px 4px 10px rgba(0,0,0,0.8); }
+        #home h1 { font-size: 3.5rem; text-shadow: 2px 4px 10px rgba(0,0,0,0.8); margin-bottom: 5px; display: flex; align-items: baseline; justify-content: center; gap: 15px; }
+        #home h3 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-top: 0; opacity: 0.9; }
 
         .glass-container { 
             width: 100%; max-width: 1000px; height: 60vh; overflow-y: auto; 
@@ -86,11 +105,20 @@
         .member-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); vertical-align: middle; }
         .member-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 12px; vertical-align: middle; border: 1px solid var(--gold); }
 
-        /* Activity Cards */
-        .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; width: 95%; max-width: 1600px; }
-        .activity-card { background: rgba(0, 35, 102, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 20px; transition: 0.4s ease; text-align: center; }
+        /* Activity Cards - 5 Columns */
+        .activity-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 20px; 
+            width: 95%; 
+            max-width: 1600px; 
+        }
+        .activity-card { background: rgba(0, 35, 102, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 15px; transition: 0.4s ease; text-align: center; }
         .activity-photo-wrapper { width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
         .activity-photo { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; cursor: pointer; }
+        
+        /* New styling for instruction text */
+        .click-instruction { font-size: 0.7rem; color: var(--gold); margin-bottom: 10px; opacity: 0.8; font-style: italic; display: block; }
 
         /* Zoom Overlay */
         #zoom-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 15000; justify-content: center; align-items: center; flex-direction: column; }
@@ -168,17 +196,20 @@
         <div class="brand" onclick="slideTo(0)">
             <div class="logo-wrapper"><img src="mec.jpg"></div>
             <div class="brand-text">
-                <h1 style="margin:0; font-size:1.1rem; color:var(--primary-blue);">The Fraternal Order of Eagles - Philippine Eagles</h1>
-                <h1 style="margin:0; font-size:0.8rem; color:var(--primary-blue);">Macasandig Eagles Club</h1>
-                <h1 style="margin:0; font-size:0.5rem; color:var(--primary-blue);">Matic Na!</h1>
+                <p class="brand-sub-title">The Fraternal Order of Eagles</p>
+                <div class="brand-main-title">
+                    <span>Macasandig</span>
+                    <span class="script-eagles">Eagles</span>
+                    <span>Club</span>
+                </div>
             </div>
         </div>
         <nav>
             <a onclick="slideTo(0)">Home</a>
-            <a onclick="slideTo(1)">Officers EY 2026</a>
-            <a onclick="slideTo(2)">Chartered Officers</a>
-            <a onclick="slideTo(3)">Club Activities</a>
-            <a onclick="slideTo(4)">Members Registry</a>
+            <a onclick="slideTo(1)">Officers</a>
+            <a onclick="slideTo(2)">Chartered</a>
+            <a onclick="slideTo(3)">Activities</a>
+            <a onclick="slideTo(4)">Registry</a>
             <div class="nav-announcement-btn" onclick="toggleAnnouncement()"><i class="fas fa-bullhorn"></i></div>
         </nav>
     </header>
@@ -192,10 +223,18 @@
     </div>
 
     <div class="main-container" id="slider">
-        <section class="frame" id="home"><h1>Macasandig Eagles Club</h1><h1>North Mindanao Region 1</h1><p>Service Through Strong Brotherhood</p></section>
-        <section class="frame" id="about"><h2 style="margin-bottom: 20px; color: var(--gold);">Club Officers EY 2026</h2><div class="glass-container"><div class="officer-grid" id="display-officers"></div></div></section>
-        <section class="frame" id="chartered"><h2 style="color: var(--gold); margin-bottom: 5px;">CHARTERED CLUB OFFICERS</h2><p style="letter-spacing: 3px; margin-bottom: 25px; text-transform: uppercase; font-weight: bold;">"Chartered to serve. United to lead. Since March 24, 2023, the Macasandig Eagles Club—soaring for the heart of our community."</p><div class="glass-container"><div class="officer-grid" id="display-chartered"></div></div></section>
-    <section class="frame" id="activities-frame"><h2 style="color: var(--gold); margin-bottom: 5px;">Club Activities (Click the picture to view more...)</h2><div class="activity-grid" id="display-activities"></div></section>--
+        <section class="frame" id="home">
+            <h1>
+                <span>Macasandig</span>
+                <span class="script-eagles" style="font-size: 4.5rem;">Eagles</span>
+                <span>Club</span>
+            </h1>
+            <h3>North Mindanao Region 1</h3>
+            <p>Service Through Strong Brotherhood</p>
+        </section>
+        <section class="frame" id="about"><h2 style="margin-bottom: 20px; color: var(--gold);">Club Officers</h2><div class="glass-container"><div class="officer-grid" id="display-officers"></div></div></section>
+        <section class="frame" id="chartered"><h2 style="color: var(--gold); margin-bottom: 5px;">Chartered March 2023</h2><p style="letter-spacing: 3px; margin-bottom: 25px; text-transform: uppercase; font-weight: bold;">Liberty, Fraternity, and Equality.</p><div class="glass-container"><div class="officer-grid" id="display-chartered"></div></div></section>
+        <section class="frame" id="activities-frame"><h2 style="margin-bottom: 10px; color: var(--gold);">Club Activities</h2><div class="activity-grid" id="display-activities"></div></section>
         <section class="frame" id="members"><h2 style="margin-bottom: 20px; color: var(--gold);">Official Member Registry</h2><div class="glass-container" id="registry-container"></div></section>
     </div>
 
@@ -203,8 +242,8 @@
         <div class="admin-sidebar">
             <div class="sidebar-brand"><i class="fas fa-shield-alt"></i> MEC Admin</div>
             <div class="sidebar-link active" onclick="showPane('announcements', this)"><i class="fas fa-bullhorn"></i> Announcements</div>
-            <div class="sidebar-link" onclick="showPane('officers', this)"><i class="fas fa-user-tie"></i>Club Officers</div>
-            <div class="sidebar-link" onclick="showPane('charters', this)"><i class="fas fa-award"></i> Chartered Officers</div>
+            <div class="sidebar-link" onclick="showPane('officers', this)"><i class="fas fa-user-tie"></i> Officers</div>
+            <div class="sidebar-link" onclick="showPane('charters', this)"><i class="fas fa-award"></i> Chartered</div>
             <div class="sidebar-link" onclick="showPane('activities', this)"><i class="fas fa-calendar-alt"></i> Activities</div>
             <div class="sidebar-link" onclick="showPane('members', this)"><i class="fas fa-users"></i> Registry</div>
             <div style="margin-top:auto"><div class="sidebar-link" style="color:var(--danger)" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</div></div>
@@ -347,7 +386,17 @@
                         const item = child.val();
                         if(type === 'activity' && display) {
                             let imgs = Array.isArray(item.img) ? item.img : [item.img];
-                            display.insertAdjacentHTML('beforeend', `<div class="activity-card"><div class="activity-photo-wrapper"><img src="${imgs[0]}" data-orig="${imgs[0]}" data-idx="0" class="activity-photo" onclick="zoomImage(this)"></div><h4 class="gold-text">${item.name}</h4><p class="sub-text">${item.position}</p><div class="activity-batch">${imgs.slice(1).map(u => `<img src="${u}">`).join('')}</div></div>`);
+                            // Added the instruction text here
+                            display.insertAdjacentHTML('beforeend', `
+                                <div class="activity-card">
+                                    <div class="activity-photo-wrapper">
+                                        <img src="${imgs[0]}" data-orig="${imgs[0]}" data-idx="0" class="activity-photo" onclick="zoomImage(this)">
+                                    </div>
+                                    <span class="click-instruction">Please click the picture to view more.</span>
+                                    <h4 class="gold-text">${item.name}</h4>
+                                    <p class="sub-text">${item.position}</p>
+                                    <div class="activity-batch">${imgs.slice(1).map(u => `<img src="${u}">`).join('')}</div>
+                                </div>`);
                         } else if(display) {
                             display.insertAdjacentHTML('beforeend', `<div class="officer-card"><img src="${item.img}" class="officer-photo"><h4 class="gold-text">${item.name}</h4><p class="sub-text">${item.position}</p></div>`);
                         }
